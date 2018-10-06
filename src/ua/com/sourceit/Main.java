@@ -22,6 +22,23 @@ public class Main {
         System.out.println("Пример: 1, лягушка, 20, 20, 0");
         System.out.println("Введите команду - выход, для выхода из приложения");
 
+        getDataFromConsole(zoo);
+
+        int totalCount = zoo.getTotalCount();
+        if (totalCount > 0){
+            System.out.println("\nКолличество животных в зоопарке " + zoo.getTotalCount());
+            System.out.println("Вы ввели таких животных:");
+            for (Animal animal : zoo.getAllAnimals()) {
+                System.out.println(animal);
+            }
+
+        } else {
+            System.out.println("Увы, животных в зоопарке нет");
+        }
+
+    }
+
+    static void getDataFromConsole(Zoo zoo){
         Scanner in = new Scanner(System.in);
 
         boolean isClosed = false;
@@ -79,22 +96,11 @@ public class Main {
                 if (animal != null){
                     zoo.addAnimal(animal);
                 }
+            } else {
+                System.out.println("Не правильный ввод данных!!!");
             }
         }
 
         in.close();
-
-        int totalCount = zoo.getTotalCount();
-        if (totalCount > 0){
-            System.out.println("\nКолличество животных в зоопарке " + zoo.getTotalCount());
-            System.out.println("Вы ввели таких животных:");
-            for (Animal animal : zoo.getAllAnimals()) {
-                System.out.println(animal);
-            }
-
-        } else {
-            System.out.println("Увы, животных в зоопарке нет");
-        }
-
     }
 }
